@@ -16,6 +16,7 @@ ul {
 
 .Link {
   text-decoration: none;
+  cursor: pointer;
 }
 
 nav > ul {
@@ -36,6 +37,13 @@ nav {
 
 input {
   outline: none;
+  box-sizing: border-box;
+}
+
+input[type="submit"],
+input[type="button"],
+input[type="checkbox"] {
+  cursor: pointer;
 }
 
 .elipsis-container {
@@ -134,6 +142,156 @@ input {
   border-bottom: 3px solid #f56b2a;
 }
 
+/* LOGIN */
+
+.login-card {
+  height: 420px;
+  width: 635px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 80px;
+  margin: 40px auto;
+}
+
+.login-card .title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #f56b2a;
+}
+
+.login-card form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.login-card input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 45px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #d9e0eb;
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+
+.login-card form input[type="submit"] {
+  background-color: #4183d7;
+  color: white;
+  font-weight: 700;
+}
+
+.login-card form input[type="button"] {
+  color: #4183d7;
+  font-weight: 700;
+}
+
+.login-card p {
+  font-weight: 700;
+}
+.login-card .no-account {
+  text-align: center;
+}
+
+/* SIGNUP */
+
+.signup-container {
+  height: 510px;
+  width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 60px;
+  margin: 40px auto;
+}
+
+.signup-card,
+.why-card {
+  flex: 1;
+}
+
+.signup-card .title {
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #f56b2a;
+}
+
+.signup-card form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.signup-card input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 45px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #d9e0eb;
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+
+.signup-card form input[type="submit"] {
+  background-color: #4183d7;
+  color: white;
+  font-weight: 700;
+}
+
+.signup-card form input[type="button"] {
+  color: #4183d7;
+  font-weight: 700;
+}
+
+.signup-card p {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.password-and-confirm {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.password-and-confirm > div {
+  flex: 1;
+}
+
+.password-and-confirm div:first-child {
+  margin-right: 20px;
+}
+
+.check-and-accept-conditions {
+  display: flex;
+}
+
+.check-and-accept-conditions input {
+  width: 40px;
+}
+
+.check-and-accept-conditions p {
+  font-size: 12px;
+}
+
+.check-and-accept-conditions span {
+  font-size: 12px;
+  color: #4183d7;
+}
 /* SEARCH BAR */
 
 .search-container {
@@ -159,7 +317,6 @@ input {
   height: 44px;
   width: 320px;
   margin-right: 20px;
-  box-sizing: border-box;
   border: none;
   background-color: #f4f6f7;
   padding-left: 35px;

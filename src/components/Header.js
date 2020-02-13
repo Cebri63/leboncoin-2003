@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../assets/img/Vector.png";
 
-const Header = () => {
+import Cookies from "js-cookie";
+
+const Header = ({ token, setToken }) => {
+  console.log(token);
+
   const [searchFocus, setSearchFocus] = useState(false);
   return (
     <nav>
@@ -40,16 +44,33 @@ const Header = () => {
           </li>
         </div>
         <li className="header-right">
-          <Link
-            onFocus={() => setSearchFocus(false)}
-            className="Link login"
-            to="/login"
-          >
-            <div className="user-offer-button">
-              <FontAwesomeIcon className="user-icon" icon={["far", "user"]} />
-              Se connecter
+          {!token ? (
+            <Link
+              onFocus={() => setSearchFocus(false)}
+              className="Link login"
+              to="/auth"
+            >
+              <div className="user-offer-button">
+                <FontAwesomeIcon className="user-icon" icon={["far", "user"]} />
+                Se connecter
+              </div>
+            </Link>
+          ) : (
+            <div
+              onClick={() => {
+                setToken(null);
+                Cookies.remove("token");
+              }}
+              onFocus={() => setSearchFocus(false)}
+              className="Link login"
+              to="/auth"
+            >
+              <div className="user-offer-button">
+                <FontAwesomeIcon className="user-icon" icon={["far", "user"]} />
+                Se déconnecter
+              </div>
             </div>
-          </Link>
+          )}
         </li>
       </ul>
     </nav>
