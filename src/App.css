@@ -208,10 +208,42 @@ input[type="checkbox"] {
   width: 1024px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background-color: white;
   padding: 60px;
   margin: 40px auto;
+}
+
+.why-card {
+  margin-right: 20px;
+}
+
+.why-card .title {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.reason-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.reason-container > div {
+  margin-left: 20px;
+}
+
+.reason-container p {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.reason-container p:first-child {
+  font-weight: 700;
+}
+
+.reason-icon {
+  font-size: 34px;
+  color: #4183d7;
 }
 
 .signup-card,

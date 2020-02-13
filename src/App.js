@@ -12,8 +12,22 @@ import Footer from "./components/Footer";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { faPlusSquare, faUser } from "@fortawesome/free-regular-svg-icons";
-library.add(faSearch, faPlusSquare, faUser, faShoppingCart);
+import {
+  faPlusSquare,
+  faUser,
+  faBell,
+  faEye,
+  faClock
+} from "@fortawesome/free-regular-svg-icons";
+library.add(
+  faSearch,
+  faPlusSquare,
+  faUser,
+  faShoppingCart,
+  faBell,
+  faEye,
+  faClock
+);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);

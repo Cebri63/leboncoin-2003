@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import Reason from "../components/Reason";
+
 const SignUp = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -41,7 +43,24 @@ const SignUp = ({ onLogin }) => {
   };
   return (
     <div className="signup-container">
-      <div className="why-card">Pourquoi créer un compte ?</div>
+      <div className="why-card">
+        <div className="title">POURQUOI CRÉER UN COMPTE</div>
+        <Reason
+          icon="clock"
+          title="Gagnez du temps"
+          description="Publiez vos annonces rapidement, avec vos informations pré-remplies chaque fois que vous souhaitez déposer une nouvelle annonce."
+        />
+        <Reason
+          icon="bell"
+          title="Soyez les premiers informés"
+          description="Créez des alertes Immo ou Emploi et ne manquez jamais l’annonce qui vous intéresse."
+        />
+        <Reason
+          icon="eye"
+          title="Visibilité"
+          description="Suivez les statistiques de vos annonces (nombre de fois où votre annonce a été vue, nombre de contacts reçus)."
+        />
+      </div>
       <div className="signup-card">
         <div className="title">CRÉER UN COMPTE</div>
         <form onSubmit={handleSignupSubmit}>
