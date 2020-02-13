@@ -1,20 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 
-const SignUp = ({
-  handleSubmit,
-  setUsername,
-  setEmail,
-  setPassword,
-  setConfirmPassword,
-  setCheckbox,
-  checkbox
-}) => {
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+
+const SignUp = ({ onLogin }) => {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
+
+  const history = useHistory();
+
+  const handleSignupSubmit = async e => {
+    try {
+      e.preventDefault();
+      if (!username || !email || !password || !confirmPassword || !checkbox) {
+        alert("Veuillez remplir tous les champs");
+      } else if (password !== confirmPassword) {
+        alert("Vos mots de passe ne sont pas identiques");
+      } else if (!checkbox) {
+        alert("Veuillez accepter les CGV et CGU");
+      } else {
+        const response = await axios.post(
+          " https://leboncoin-api.herokuapp.com/api/user/sign_up",
+          {
+            email: email,
+            username: username,
+            password: password
+          }
+        );
+        if (response.data.token) {
+          onLogin(response.data.token);
+          history.push("/");
+        }
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div className="signup-container">
       <div className="why-card">Pourquoi créer un compte ?</div>
       <div className="signup-card">
         <div className="title">CRÉER UN COMPTE</div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignupSubmit}>
           <p>Pseudo *</p>
           <input type="text" onChange={e => setUsername(e.target.value)} />
           <p>Adresse email *</p>

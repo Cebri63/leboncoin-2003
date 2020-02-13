@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Offers from "./containers/Offers";
 import Offer from "./containers/Offer";
-import Auth from "./containers/Auth";
+import Login from "./containers/Login";
+import SignUp from "./containers/SignUp";
 import Footer from "./components/Footer";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -32,8 +33,11 @@ function App() {
         <Route path="/offer/:id">
           <Offer />
         </Route>
-        <Route path="/auth/">
-          <Auth onLogin={onLogin} />
+        <Route path="/log_in/">
+          <Login onLogin={onLogin} />
+        </Route>
+        <Route path="/sign_up/">
+          <SignUp onLogin={onLogin} />
         </Route>
       </Switch>
       <Footer />

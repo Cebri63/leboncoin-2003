@@ -6,8 +6,6 @@ import Logo from "../assets/img/Vector.png";
 import Cookies from "js-cookie";
 
 const Header = ({ token, setToken }) => {
-  console.log(token);
-
   const [searchFocus, setSearchFocus] = useState(false);
   return (
     <nav>
@@ -48,7 +46,7 @@ const Header = ({ token, setToken }) => {
             <Link
               onFocus={() => setSearchFocus(false)}
               className="Link login"
-              to="/auth"
+              to="/log_in"
             >
               <div className="user-offer-button">
                 <FontAwesomeIcon className="user-icon" icon={["far", "user"]} />
