@@ -22,7 +22,7 @@ nav > ul {
   display: flex;
 }
 
-a {
+.footer a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -202,6 +202,8 @@ input {
 
 /* OFFERS */
 .card {
+  text-decoration: none;
+  color: black;
   background-color: white;
   cursor: pointer;
   width: 1024px;

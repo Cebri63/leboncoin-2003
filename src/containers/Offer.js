@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -7,8 +7,8 @@ const moment = require("moment");
 require("moment/locale/fr");
 
 const Offer = props => {
-  const history = useHistory();
-  let id = history.location.state.id;
+  const params = useParams();
+  let id = params.id;
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
