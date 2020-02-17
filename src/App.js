@@ -8,6 +8,8 @@ import Offers from "./containers/Offers";
 import Offer from "./containers/Offer";
 import Login from "./containers/Login";
 import SignUp from "./containers/SignUp";
+import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 import Footer from "./components/Footer";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -31,15 +33,18 @@ library.add(
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
+  const [username, setUsername] = useState(Cookies.get("username") || "");
 
-  const onLogin = token => {
+  const onLogin = (token, username) => {
     setToken(token);
+    setUsername(username);
     Cookies.set("token", token);
+    Cookies.set("username", username);
   };
 
   return (
     <Router className="App">
-      <Header setToken={setToken} token={token} />
+      <Header setToken={setToken} token={token} username={username} />
       <Switch>
         <Route exact path="/">
           <Offers />
@@ -52,6 +57,12 @@ function App() {
         </Route>
         <Route path="/sign_up/">
           <SignUp onLogin={onLogin} />
+        </Route>
+        <Route path="/publish/">
+          <Publish />
+        </Route>
+        <Route path="/payment/">
+          <Payment username={username} />
         </Route>
       </Switch>
       <Footer />

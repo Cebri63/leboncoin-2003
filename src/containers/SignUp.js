@@ -25,15 +25,17 @@ const SignUp = ({ onLogin }) => {
         alert("Veuillez accepter les CGV et CGU");
       } else {
         const response = await axios.post(
-          " https://leboncoin-api.herokuapp.com/api/user/sign_up",
+          "https://leboncoin-api-final.herokuapp.com/user/sign_up",
           {
             email: email,
             username: username,
             password: password
           }
         );
+        // console.log(response.data);
+
         if (response.data.token) {
-          onLogin(response.data.token);
+          onLogin(response.data.token, response.data.account.username);
           history.push("/");
         }
       }

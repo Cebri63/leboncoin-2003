@@ -1,26 +1,24 @@
 import React, { useState } from "react";
-
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const history = useHistory();
 
   const handleLoginSubmit = async e => {
     try {
       e.preventDefault();
       const response = await axios.post(
-        "https://leboncoin-api.herokuapp.com/api/user/log_in",
+        "https://leboncoin-api-final.herokuapp.com/user/log_in",
         {
           email: email,
           password: password
         }
       );
       if (response.data.token) {
-        onLogin(response.data.token);
+        onLogin(response.data.token, response.data.account.username);
         history.push("/");
       }
     } catch (error) {

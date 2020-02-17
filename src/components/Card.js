@@ -8,8 +8,8 @@ const Card = ({ offer }) => {
   return (
     <Link to={`/offer/${offer._id}`} className="card">
       <div className="picture">
-        {offer.pictures[0] ? (
-          <img alt="offer" src={offer.pictures[0]} />
+        {offer.picture ? (
+          <img alt="offer" src={offer.picture.url} />
         ) : (
           <p>Pas de photo</p>
         )}

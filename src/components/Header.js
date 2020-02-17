@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../assets/img/Vector.png";
 
 import Cookies from "js-cookie";
 
-const Header = ({ token, setToken }) => {
+const Header = ({ token, setToken, username }) => {
   const [searchFocus, setSearchFocus] = useState(false);
+  const history = useHistory();
   return (
     <nav>
       <ul>
@@ -58,13 +59,14 @@ const Header = ({ token, setToken }) => {
               onClick={() => {
                 setToken(null);
                 Cookies.remove("token");
+                Cookies.remove("username");
+                history.push("/");
               }}
               onFocus={() => setSearchFocus(false)}
               className="Link login"
-              to="/auth"
             >
               <div className="user-offer-button">
-                <FontAwesomeIcon className="user-icon" icon={["far", "user"]} />
+                <p>{username}</p>
                 Se déconnecter
               </div>
             </div>

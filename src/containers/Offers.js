@@ -11,8 +11,10 @@ const Offers = () => {
 
   const fetchData = async () => {
     const response = await axios.get(
-      "https://leboncoin-api.herokuapp.com/api/offer/with-count"
+      "https://leboncoin-api-final.herokuapp.com/offer/with-count"
     );
+    // console.log(response.data);
+
     setData(response.data);
     setIsLoading(false);
   };
@@ -22,15 +24,17 @@ const Offers = () => {
   }, []);
   return (
     <div>
-      <Search />
+      <Search setData={setData} />
       {isLoading ? (
         <div>Loading...</div>
-      ) : (
+      ) : data.offers.length > 0 ? (
         <div style={{ marginTop: "200px" }}>
           {data.offers.map((offer, index) => {
             return <Card key={offer._id} offer={offer} />;
           })}
         </div>
+      ) : (
+        <div>Aucune offre pour le moment</div>
       )}
       ;
     </div>

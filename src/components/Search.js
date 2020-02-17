@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 
-const Search = () => {
-  const handleSubmit = e => {
+const Search = ({ setData }) => {
+  const [searchInput, setSearchInput] = useState("");
+  const handleSubmit = async e => {
     e.preventDefault();
+    const response = await axios.get(
+      `https://leboncoin-api-final.herokuapp.com/offer/with-count?title=${searchInput}`
+    );
+    setData(response.data);
   };
   return (
     <div className="search-container">

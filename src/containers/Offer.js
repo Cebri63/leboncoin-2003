@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -8,6 +8,7 @@ require("moment/locale/fr");
 
 const Offer = props => {
   const params = useParams();
+  const history = useHistory();
   let id = params.id;
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -16,8 +17,9 @@ const Offer = props => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://leboncoin-api.herokuapp.com/api/offer/${id}`
+          `https://leboncoin-api-final.herokuapp.com/offer/${id}`
         );
+        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -34,7 +36,7 @@ const Offer = props => {
       <div className="offer-creator">
         <div className="offer">
           <div className="offer-picture">
-            <img alt="offer" src={data.pictures[0]} />
+            <img alt="offer" src={data.picture.url} />
           </div>
           <div className="offer-infos">
             <div className="title-price">
@@ -49,7 +51,16 @@ const Offer = props => {
         </div>
         <div className="creator">
           <p>{data.creator.account.username}</p>
-          <button>
+          <button
+            onClick={() =>
+              history.push("/payment", {
+                productId: data._id,
+                img: data.picture.url,
+                title: data.title,
+                price: data.price
+              })
+            }
+          >
             <FontAwesomeIcon
               className="shopping-cart-icon"
               icon="shopping-cart"
