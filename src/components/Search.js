@@ -11,6 +11,7 @@ const Search = ({ setData }) => {
     );
     setData(response.data);
   };
+
   return (
     <div className="search-container">
       <div className="elipsis-container">
@@ -19,7 +20,11 @@ const Search = ({ setData }) => {
       <div className="search-bar">
         <form onSubmit={handleSubmit}>
           <div className="search-input">
-            <input placeholder="Que recherchez-vous ?" type="text" />
+            <input
+              onChange={e => setSearchInput(e.target.value)}
+              placeholder="Que recherchez-vous ?"
+              type="text"
+            />
             <FontAwesomeIcon
               className="form-search-icon"
               icon="search"
