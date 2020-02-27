@@ -36,7 +36,11 @@ const Offer = props => {
       <div className="offer-creator">
         <div className="offer">
           <div className="offer-picture">
-            <img alt="offer" src={data.picture.url} />
+            {data.picture ? (
+              <img alt="offer" src={data.picture.url} />
+            ) : (
+              <span>Pas de photo</span>
+            )}
           </div>
           <div className="offer-infos">
             <div className="title-price">

@@ -35,7 +35,7 @@ const Publish = () => {
       );
       history.push("/offer/" + response.data._id);
     } catch (e) {
-      console.log(e.message);
+      console.log("error request ", e.message);
     }
   };
 

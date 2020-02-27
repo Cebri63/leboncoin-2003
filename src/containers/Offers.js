@@ -4,24 +4,26 @@ import axios from "axios";
 
 import Search from "../components/Search";
 import Card from "../components/Card";
+import Pagination from "../components/Pagination";
 
 const Offers = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [skip, setSkip] = useState(0);
 
   const fetchData = async () => {
     const response = await axios.get(
-      "https://leboncoin-api-final.herokuapp.com/offer/with-count"
+      `https://leboncoin-api-final.herokuapp.com/offer/with-count?skip=${skip}&limit=3`
     );
-    // console.log(response.data);
-
+    console.log(response.data);
     setData(response.data);
     setIsLoading(false);
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [skip]);
+
   return (
     <div>
       <Search setData={setData} />
@@ -37,6 +39,7 @@ const Offers = () => {
         <div>Aucune offre pour le moment</div>
       )}
       ;
+      <Pagination count={data.count} skip={skip} setSkip={setSkip} />
     </div>
   );
 };

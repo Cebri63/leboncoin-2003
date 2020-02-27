@@ -444,6 +444,21 @@ textarea {
   margin-top: 0;
 }
 
+/* PAGINATION ************************** PAGINATION ******************************/
+
+.pagination {
+  text-align: center;
+}
+
+.pagination button {
+  width: 200px;
+  height: 45px;
+  background: #333;
+  margin: 50px 0;
+  color: white;
+  outline: none;
+}
+
 /* OFFER ************************** OFFER ******************************/
 
 .offer-container {
@@ -466,6 +481,7 @@ textarea {
   height: 395px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .offer-picture img {
@@ -592,31 +608,31 @@ textarea {
   display: flex;
   padding: 30px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  height: 600px;
   width: 50%;
   margin: auto;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .payment-summary {
-  padding: 20px;
-  height: 100px;
-  display: flex;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.payment-summary > div {
-  margin-left: 30px;
+  text-align: center;
   font-weight: 700;
 }
 
-.payment-summary > div p:last-child {
+.payment-summary > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-summary > div > p:last-child {
   color: #f56b2a;
+  margin: 0;
 }
 
 .payment-summary img {
-  height: 100px;
+  width: 150px;
   object-fit: contain;
 }
 
@@ -641,11 +657,6 @@ textarea {
   color: white;
   background-color: #f56b2a;
   border-radius: 5px;
-}
-
-.card-element {
-  height: 40px;
-  border: 1px solid #4183d7;
 }
 
 .payment-confirmed {
