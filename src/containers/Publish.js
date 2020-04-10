@@ -14,7 +14,7 @@ const Publish = () => {
   const token = Cookies.get("token");
   // console.log(token);
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("title", title);
@@ -23,14 +23,14 @@ const Publish = () => {
     formData.append("file", file);
 
     try {
-      const response = await axios.post(
+      const response = await axios.put(
         "https://leboncoin-api-final.herokuapp.com/offer/publish",
         formData,
         {
           headers: {
             Authorization: "Bearer " + token,
-            "Content-Type": "multipart/form-data"
-          }
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
       history.push("/offer/" + response.data._id);
@@ -44,17 +44,17 @@ const Publish = () => {
       <div className="title">DÉPOSER UNE ANNONCE</div>
       <form onSubmit={onSubmit}>
         <p>Titre de l'annonce *</p>
-        <input type="text" onChange={e => setTitle(e.target.value)} />
+        <input type="text" onChange={(e) => setTitle(e.target.value)} />
         <p>Texte de l'annonce *</p>
         <textarea
           rows="20"
           type="text"
-          onChange={e => setDescription(e.target.value)}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <p>Prix *</p>
-        <input type="number" onChange={e => setPrice(e.target.value)} />
+        <input type="number" onChange={(e) => setPrice(e.target.value)} />
         <p>Photo *</p>
-        <input type="file" onChange={e => setFile(e.target.files[0])} />
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         <input value="Valider" type="submit" />
       </form>
     </div>

@@ -14,7 +14,7 @@ const SignUp = ({ onLogin }) => {
 
   const history = useHistory();
 
-  const handleSignupSubmit = async e => {
+  const handleSignupSubmit = async (e) => {
     try {
       e.preventDefault();
       if (!username || !email || !password || !confirmPassword || !checkbox) {
@@ -24,12 +24,12 @@ const SignUp = ({ onLogin }) => {
       } else if (!checkbox) {
         alert("Veuillez accepter les CGV et CGU");
       } else {
-        const response = await axios.post(
+        const response = await axios.put(
           "https://leboncoin-api-final.herokuapp.com/user/sign_up",
           {
             email: email,
             username: username,
-            password: password
+            password: password,
           }
         );
         // console.log(response.data);
@@ -67,22 +67,22 @@ const SignUp = ({ onLogin }) => {
         <div className="title">CRÉER UN COMPTE</div>
         <form onSubmit={handleSignupSubmit}>
           <p>Pseudo *</p>
-          <input type="text" onChange={e => setUsername(e.target.value)} />
+          <input type="text" onChange={(e) => setUsername(e.target.value)} />
           <p>Adresse email *</p>
-          <input type="text" onChange={e => setEmail(e.target.value)} />
+          <input type="text" onChange={(e) => setEmail(e.target.value)} />
           <div className="password-and-confirm">
             <div>
               <p>Mot de passe *</p>
               <input
                 type="password"
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div>
               <p>Confirmer le mot de passe *</p>
               <input
                 type="password"
-                onChange={e => setConfirmPassword(e.target.value)}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
           </div>
